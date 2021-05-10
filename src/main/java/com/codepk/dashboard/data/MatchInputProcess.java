@@ -22,20 +22,20 @@ public class MatchInputProcess implements ItemProcessor<MatchInput, Match>{
 		  match.setSeason(matchinput.getSeason());
 		  match.setCity(matchinput.getCity());
 		  match.setDate(LocalDate.parse(matchinput.getDate()));
-		  String  firstIningsteam="";
-		  String  sencondIningsteam="";
-		  
-		  if(matchinput.getToss_decision().equalsIgnoreCase("bat")){
-			  firstIningsteam=matchinput.getToss_winner();
-			  sencondIningsteam=(matchinput.getToss_winner()).equalsIgnoreCase(matchinput.getTeam2()) ? matchinput.getTeam2():matchinput.getTeam1();	
-			  }
-		  else
-		  {
-			  sencondIningsteam=matchinput.getToss_winner();
-			  firstIningsteam=(matchinput.getToss_winner()).equalsIgnoreCase(matchinput.getTeam1()) ? matchinput.getTeam1():matchinput.getTeam2();
-		  }
-		  match.setTeam1(firstIningsteam);
-		  match.setTeam2(sencondIningsteam);
+			String firstInningsTeam, secondInningsTeam;
+
+			if ("bat".equals(matchinput.getToss_decision())) {
+				firstInningsTeam = matchinput.getToss_winner();
+				secondInningsTeam = matchinput.getToss_winner().equals(matchinput.getTeam1()) ? matchinput.getTeam2()
+						: matchinput.getTeam1();
+
+			} else {
+				secondInningsTeam = matchinput.getToss_winner();
+				firstInningsTeam = matchinput.getToss_winner().equals(matchinput.getTeam1()) ? matchinput.getTeam2()
+						: matchinput.getTeam1();
+			}
+			match.setTeam1(firstInningsTeam);
+			match.setTeam2(secondInningsTeam);
 		  match.setTossWinner(matchinput.getToss_winner());
 		  match.setTossDecision(matchinput.getToss_decision());
 		  match.setResult(matchinput.getResult());

@@ -1,5 +1,6 @@
 package com.codepk.dashboard.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +10,7 @@ import com.codepk.dashboard.repository.MatchRepo;
 import com.codepk.dashboard.repository.TeamRepo;
 
 @RestController
+@CrossOrigin
 public class TeamController {
 	
 	

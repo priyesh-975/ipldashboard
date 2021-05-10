@@ -47,7 +47,7 @@ public class jobfinishNotificaionListner extends JobExecutionListenerSupport
 	    		  .forEach(team->teamData.put(team.getTeamName(), team));
 	      
 	      
-	      em.createQuery("select m.team2,count(*) from Match m group by m.team2",Object[].class)
+			em.createQuery("select m.team2,count(*) from Match m group by m.team2", Object[].class)
 		  .getResultList()
 		  .stream()
 		  .forEach(team->{
